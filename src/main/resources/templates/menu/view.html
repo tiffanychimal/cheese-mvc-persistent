@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
 <head th:replace="fragments :: head"></head>
 
 <body class="container">
@@ -8,17 +9,13 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<br />
+<ul>
+    <li th:each="cheese : ${cheeses}" th:text="${cheese.name}"></li>
+</ul>
 
-<table>
-    <tr th:each="category : ${categories}">
-        <li th:text="${category.name}"></li>
-    </tr>
-</table>
+<p th:unless="${cheeses.size()}"><i>No cheeses yet</i></p>
 
-<br />
-
-<a href="/category/add">Add Category</a>
+<p><a th:href="'/menu/add-item/' + ${menuId}">Add Cheese</a></p>
 
 </body>
 </html>
